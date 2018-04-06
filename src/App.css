@@ -33,6 +33,12 @@ body {
   justify-content: space-around;
 }
 
+.App-item {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+}
+
 input,
 button {
   padding: 10px;

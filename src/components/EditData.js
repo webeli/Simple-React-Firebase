@@ -23,7 +23,7 @@ class EditData extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ width: '300px' }}>
         <h1>Edit Data</h1>
         {!!this.props.selectedCity ? (
           <form onSubmit={(e) => this.editData(e)}>
