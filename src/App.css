@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -20,6 +26,17 @@
 
 .App-intro {
   font-size: large;
+}
+
+.App-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+input,
+button {
+  padding: 7px;
+  border: 1px solid #000;
 }
 
 @keyframes App-logo-spin {

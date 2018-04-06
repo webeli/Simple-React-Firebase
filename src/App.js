@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { db } from './utils/db'
 import './App.css';
+import GetData from './components/GetData';
+import AddData from './components/AddData';
+import EditData from './components/EditData';
 
 class App extends Component {
 
@@ -28,12 +31,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {this.state.cities.map(item => (
-          <p key={item.id}>{item.name}</p>
-        ))}
+        <div className="App-content">
+        <AddData />
+        <GetData />
+        <EditData />
+        </div>    
       </div>
     );
   }
