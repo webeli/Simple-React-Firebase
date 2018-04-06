@@ -13,7 +13,7 @@ class GetData extends Component {
   componentDidMount() {
     db.collection("cities").onSnapshot(snap => {
       const result = snap.docs.map(doc => {
-        return { id: doc.id, ...doc.data() }
+        return { id: doc.id, ...doc.data() };
       });
       this.setState({ cities: result });
     });
@@ -24,7 +24,7 @@ class GetData extends Component {
       <div>
         <h1>Get Data</h1>
         {this.state.cities.map(item => (
-          <p key={item.id}>{item.name}</p>
+          <p key={item.id} onClick={() => this.props.selectCity(item)}>{item.name}</p>
         ))}
       </div>
     );

@@ -3,36 +3,36 @@ import { db } from '../utils/db';
 
 class EditData extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      selectedItem: ''
+  editData(e) {
+    e.preventDefault();
+    db.collection("cities").doc(this.state.selectedCity.id).set({
+      name: this.state.selectedCity.name
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!!nextProps.selectedCity) {
+      this.setState({ selectedCity: nextProps.selectedCity });
     }
   }
 
-  editData(e) {
-    e.preventDefault();
-    db.collection("cities").add({
-      name: this.input.value
-    }).then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    }).catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
+  onCityNameChange(e) {
+    const newSelectedCityState = { ...this.state.selectedCity, name: e.target.value };
+    this.setState({ selectedCity: newSelectedCityState });
   }
 
   render() {
     return (
       <div>
         <h1>Edit Data</h1>
-        {!!this.state.selectedItem ? (
+        {!!this.props.selectedCity ? (
           <form onSubmit={(e) => this.editData(e)}>
-            <input type="text" placeholder="Click on city to edit" ref={(i) => this.input = i} />
+            <input type="text" value={this.state.selectedCity.name} onChange={(e) => this.onCityNameChange(e)} />
             <button type="submit">Edit</button>
           </form>
         ) : (
-          <div>You need to click on a city to edit.</div>
-        )}
+            <div>You need to click on a city to edit.</div>
+          )}
       </div>
     );
   }
