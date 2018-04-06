@@ -7,12 +7,6 @@ class AddData extends Component {
     e.preventDefault();
     db.collection("cities").add({
       name: this.input.value
-    })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
     });
   }
 
